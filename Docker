@@ -1,0 +1,190 @@
+Docker is a tool which create container on host 
+Docker is an advance version of virtualization.
+Docker is a set of platform as a service that uses OS level virtualization.
+Docker is a platform to create,deploy and run the application , It is an open source 
+Docker uses container on OS to run the application
+It allows application to use the same linux kernel as asystem on the host computer rather than creating a whole virtual OS.
+Docker written in go language.
+===================================================
+Comparison between Docker and Virtualication:
+Virtualization is tech. in which we do hardware level virtualization. 
+There are two types of virtualization :
+Type1: In type 1 we install OS on hardware and then create VM on it by using the hypervisor link VMware, virtualbox
+Type2: In type 2 we install hypervisor on hardware like ESXI and then with the help of hypervisor we create mutile VM
+
+Note: In virtualization we need to insatll separate O.S for all VM. It means every VM has its own kernal image.
+
+Docker is a  tech. in which we do OS level virtualization.
+We need  Host to insatll the docker and with the help of single host kernel image we can manage the multiple containers.
+
+Docker is advance version of virtualization in which it uses 90% resouces from the host and 10% pull from dockerhub/registry to run the conatiner and application over it.
+
+========================================================
+Advantages of Docker:
+No pre-allocation of the resources/RAM
+Less cost
+It is light in weight
+It can be run on hardware/cloud/Vm
+It took very less time to create the container
+=========================================================
+Docker Daemon: 
+Docker Daemon runs on the host O.S
+It is responsible for the running container and the docker services.
+==========================================================
+Docker host:
+This is base O.S 
+Docker host is used to provide the provide an environment to execute and run application .
+It contains the docker daemon,images,network,storage,containers 
+==============================================================
+
+Docker Hub/registry:
+
+Docker hub manages and store all the docker images on internet.
+
+there are two type of registries:
+
+1. Private registry: used to share the images with in the enterprises
+2. Public registry: it is publicly avaibale and also know as dockerhub.
+
+Note : you can push your own created image on hub and you need to create an account on docker hub
+$ docker push Imagename (command used for oush the image)
+===========================================================
+STEPS TO INSTALL DOCKER 
+
+1. Open the terminal on Ubuntu.
+
+2. Remove any Docker files that are running in the system, using the following command:
+
+ $ sudo apt-get remove docker docker-engine docker.io
+ 
+ 3. Check if the system is up-to-date using the following command:
+ 
+ $ sudo apt-get update
+ 
+ 4. Install Docker using the following command:
+ 
+ $ sudo apt install docker.io
+ 
+ (You’ll then get a prompt asking you to choose between y/n - choose y)
+ 
+ 5. Install all the dependency packages using the following command:
+ 
+ $ sudo snap install docker
+ 
+ 6. Before testing Docker, check the version installed using the following command:
+ 
+ $ docker --version
+ 
+ 7. Pull an image from the Docker hub using the following command and  start the container:
+
+$ sudo docker run ubuntu/redhat/centos  (by default pull latest version)
+
+8. Check if the docker image has been pulled and is present in your system using the following command:
+
+$ sudo docker images
+
+9. To display all the containers pulled, use the following command:
+
+$ sudo docker ps -a
+
+10. To check for containers in a running state, use the following command:
+
+$ sudo docker ps
+====================================================================
+Some basic command used in Docker:
+
+To check docker service on host:
+$ sudo systemctl status docker 
+
+To start/stop the service:
+$ systemctl start/stop docker
+
+To enable the service
+$ systemctl enabled docker (After reboot it will start automatically if it is enabled)
+
+To see all images present in your local machine:
+$ sudo docker images
+
+To check the running and stop containers:
+$ docker ps -a
+
+To search image in docker hub:
+$ docker search  (image name)
+
+To Download image from hub:
+$ docker pull (image name)
+
+To delete the container :
+$ docker rm (container name)
+
+To delete the image
+$ docker rmi (image name)
+
+Note : We can not delete the image if it is used by any container and also we can not delete the running container.
+ 
+To see the details of container:
+
+$ dcoker inspect containername
+
+To go inside the container:
+$ docker attach (containername or id)
+
+use exit for go out from container
+
+Note: we have two types of mode in docker
+1. attach  2. Dettach
+
+If we use dettach mode then it will create the container in backend and will give back terminal 
+
+To create the container using command:
+
+$ docker run -it -name  container1  (imagename)  
+
+=======================================================================
+Docker File:
+
+Docker file is a text file and it contains some set of instruction
+Some set of instruction:
+
+FROM: image name
+ADD: to add something from internet
+RUN: to run any command
+VOLUME: to create a voulme/storage
+PORT: port mapping container to host
+COPY: copy data from local host or conatiner
+ENTRYPOINT: first coomad need to excute
+
+To create the image from docker file:
+
+$ docker build -t name .   (it will check the docker file in current directory and bulild the image with tag name used in command)
+
+check the image using command:
+
+$ docker images
+
+Now with the help of below command you can create the container from this new image:
+
+$docker run -it  --name (container name of you choice)  imagename
+===================================================================
+
+To create the voulme while creating the container:
+
+$ docker run -it --name contaimername  -v /voume1  imagename /bin/bash
+
+To create the voulme while creating the container from another:
+
+$ docker run -it --name containername  --privilage=true --voulme-from=container1  imagename /bin/bash
+
+Note: You can only create the volume while creating the conatiner and need to declare a directory and then directory as a volume.
+======================================================================
+Port mapping concept in Docker:
+
+Port mapping concept is used to listen the request for different services.
+
+Generally we map the conatiner port with the host port
+
+Command used for port mapping:
+
+$ docker run -it --name containername -p 8080:80 imagename
+
+Note: 8080 is the host port and 80 is the port of running container
