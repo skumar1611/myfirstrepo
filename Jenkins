@@ -1,0 +1,25 @@
+Create a VM or EC2 instance
+
+# apt update
+
+# apt install openjdk-11-jdk -y       >>>>>>>>>>install java 
+
+check verion # java -version
+
+# wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
+
+# sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+# apt update
+
+# apt install jenkins
+
+# systemctl status jenkins
+
+# systemctl start jenkins.service
+
+check SG of EC2 and allow port 8080  using custom TCP, Also enable ssh and http  service
+ 
+#http://localhost:8080   >>>Public IP in case of EC2
+
+# cat /var/lib/jenkins/secrets/initialAdminPassword    >>>>>>GUI admin password
