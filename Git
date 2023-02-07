@@ -1,0 +1,75 @@
+Git - It is a tool distributed verson control tool or Source code management tool
+  In this control tool we have two terms: Git and github
+  
+  Git is for your local repo sitory (created on your local system) and Github is your remote Repository .
+  
+  Repository : It is a place where you can store your source code.
+  
+  Some useful terms:
+  
+  Working directory : Directory on your local system/server where you write the code.
+  
+  Commit : where there is any change in the source code then every time new commit ID will generate and it contains 40 alpha-numeric value.
+  
+  Installtion of git on ubuntu:
+  
+  #apt update -y
+  #apt install git -y
+  # git --version  (Tocheck the git version)
+  # which git  (to check git is installed or not, this command will show you the binary)
+ Now userconfiguration :
+ 
+ #git --config --global user.name "sumit"
+ #git --config --global user.email "sumit.kumar@kellton.com" 
+ # git config --list (to check the user)
+ # git config --global --edit (to edit the user details)
+ 
+ Now create EC2 machine in AWS cloud:
+ Note: enable ssh and http is SG of EC2 server
+ 
+ Access it through CLI
+ Now create a directory in the server
+ # mkdir mygit
+ 
+ Go inside the above directory and then 
+ 
+ #git init (this command will change the directory into repo)
+ Note : lyou will get a hidden folder with name .git in pwd
+ 
+ Now create a soucre file (.yaml,java,text....etc)
+# git add .  (it will add this code into staging area)
+
+#git status (to check current status)
+# git commit -m "type any message"
+
+After commit this will go under local repo
+
+# git status
+#git log
+#git show  "commit ID"  (to see the details)
+#git remote add origin "central git url" >>>>>create account on github and create a repository on github
+#git push -u origin master  (use git account creds)
+===========================================================================
+Command to check branch
+
+# git branch  
+above command will show you the braches and * represent working brach (means you are inside the branch having star sign)
+
+#git branch  newbranchname    >>>>>> to create new branch
+# git branch  (show you all available branch)
+ # git checkout  branchname (inwhich you want to go inside)
+==========================================================================
+
+Command to merge the branch into master 
+Go inside the master branch using checkout command
+#git checkout master
+then  run
+#git merge branchname    >>>>>>branchname is branch you want to merge in master
+# get branch
+
+Note:  when ever you create a new branch from master and you did any change after that you need to add it in staging area and then commit it before merge into master
+
+Once you merge the branch then you can push it on github
+#git push origin master  >>>>>> enter the username and password
+
+
